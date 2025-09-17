@@ -92,59 +92,44 @@ docker compose up -d
 docker compose down
 ```
 
-Subindo e recriando (útil após editar variáveis)
+### Subindo e recriando (útil após editar variáveis)
+```shell
 docker compose up -d --force-recreate
+```
 
-🔌 4. Conexão aos Bancos
+## 🔌 4. Conexão aos Bancos
 Dentro do Docker (entre containers)
 
-PostgreSQL → postgres:5432
-
-Redis → redis:6379
-
-MySQL → mysql:3306
-
-MongoDB → mongo:27017
+- PostgreSQL → postgres:5432
+- Redis → redis:6379
+- MySQL → mysql:3306
+- MongoDB → mongo:27017
 
 Fora do Docker (localhost)
 
-PostgreSQL → localhost:5432
+- PostgreSQL → localhost:5432
+- Redis → localhost:6379
+- MySQL → localhost:3306
+- MongoDB → localhost:27017
+- Mongo Express → http://localhost:8081
 
-Redis → localhost:6379
-
-MySQL → localhost:3306
-
-MongoDB → localhost:27017
-
-Mongo Express → http://localhost:8081
-
-🛠️ 5. Comandos Úteis
-Logs
+## 🛠️ 5. Comandos Úteis
+### Logs
+```shell
 docker logs -f postgres_17
 docker logs -f redis_7
 docker logs -f mysql_8
 docker logs -f mongo_7
-
-Entrar no container
+```
+### Entrar no container
+```shell
 docker exec -it postgres_17 psql -U meu_usuario -d meu_db
 docker exec -it mysql_8 mysql -u meu_usuario -p
 docker exec -it redis_7 redis-cli
 docker exec -it mongo_7 mongosh -u meu_usuario -p
-
-Volumes
+```
+### Volumes
+```shell
 docker volume ls
 docker volume inspect pgData
-
-📂 6. Estrutura de Arquivos
-.
-├── docker-compose.yaml
-├── .env
-└── README.md   ← este guia
-
-
-Exemplo de .env:
-
-DATABASE=meu_db
-DB_USER=meu_usuario
-DB_PASSWORD=minha_senha
-ROOT_PASSWORD=senha_root_mysql
+```
