@@ -1,4 +1,4 @@
-# 📘 README.md — Guia de Bancos de Dados para Estudos com Docker
+# 📘 Guia de Bancos de Dados para Estudos com Docker
 ## 🔧 1. Pré-requisitos
 
 Antes de começar, certifique-se de ter instalado:
