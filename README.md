@@ -92,6 +92,16 @@ docker compose up -d
 docker compose down
 ```
 
+### Parando os serviços e excluindo containers e volumes
+```shell 
+docker compose down -v
+```
+
+### Removendo todas as imagens
+```shell
+docker image rm $(docker image ls -aq)
+```
+
 ### Subindo e recriando (útil após editar variáveis)
 ```shell
 docker compose up -d --force-recreate
