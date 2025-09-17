@@ -1,0 +1,76 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:17.0
+    container_name: postgres_17
+    restart: always
+    volumes:
+      - postgresData:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${DATABASE}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7.0
+    container_name: redis_7
+    restart: always
+    volumes:
+      - redisData:/data
+    ports:
+      - "6379:6379"
+
+  mysql:
+    image: mysql:8.4.6
+    container_name: mysql_8
+    restart: always
+    volumes:
+      - mysqlData:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "3306:3306"
+
+  mongo:
+    image: mongo:7.0
+    container_name: mongo_7
+    restart: always
+    volumes:
+      - mongoData:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "27017:27017"
+
+  mongo-express:
+    image: mongo-express:1.0.2
+    container_name: mongo_express
+    restart: always
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${DB_USER}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${DB_PASSWORD}
+      ME_CONFIG_MONGODB_SERVER: mongo
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongo
+
+volumes:
+  postgresData:
+    name: "postgresData"
+  redisData:
+    name: "redisData"
+  mysqlData:
+    name: "mysqlData"
+  mongoData:
+    name: "mongoData"
+
+
+
