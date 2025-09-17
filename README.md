@@ -1,6 +1,9 @@
 # 📘 Guia de Bancos de Dados para Estudos com Docker
 ## 🔧 1. Pré-requisitos
 
+👉 Esse guia cobre desde os comandos manuais (docker run) até o uso integrado com docker-compose, para compor um 
+serviço de banco de dados utilizados para estudos e testes.
+
 Antes de começar, certifique-se de ter instalado:
 
 - Docker
